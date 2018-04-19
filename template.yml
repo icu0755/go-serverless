@@ -1,12 +1,16 @@
 AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Hello World Go Lambda function
 
+Description: A simple Hello World Serverless project
 Resources:
-
-  Function:
+  MainFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: main
-      CodeUri: ./main.zip
       Runtime: go1.x
+      Handler: main
+      Events:
+        Vote:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
